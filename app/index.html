@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cover Snap Studio — GTA-style cover maker</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">&#9733;</span>
+    <div>
+      <h1>Cover Snap Studio</h1>
+      <p>Turn your photo and a caption into GTA-style cover art.</p>
+    </div>
+  </div>
+  <div class="top-actions">
+    <button id="shuffle" type="button" class="btn btn--ghost">Shuffle sunsets</button>
+    <button id="exportAll" type="button" class="btn btn--primary">Export all 4 sizes</button>
+  </div>
+</header>
+
+<main class="layout">
+  <section class="preview-pane">
+    <div class="preview-frame">
+      <canvas id="preview" width="720" height="720" aria-label="Cover preview"></canvas>
+      <canvas id="shot" width="1080" height="1080" aria-label="Shot canvas" hidden></canvas>
+    </div>
+    <p class="preview-caption">Preview — <span id="exportSizeLabel">Square 1080 &times; 1080</span></p>
+    <p id="status" class="status" role="status">Loading samples…</p>
+  </section>
+
+  <aside class="controls">
+    <section class="panel">
+      <h2>1 &middot; Photos</h2>
+      <p class="hint">Photos stay on your machine — they are never uploaded.</p>
+      <label class="field">
+        <span>Photo A (hero)</span>
+        <input id="photoAInput" type="file" accept="image/*">
+      </label>
+      <p id="photoAName" class="file-name">No photo — sunset placeholder</p>
+      <label class="field">
+        <span>Photo B (second panel)</span>
+        <input id="photoBInput" type="file" accept="image/*">
+      </label>
+      <p id="photoBName" class="file-name">No photo — sunset placeholder</p>
+      <div class="button-row">
+        <button id="samplePier" type="button" class="btn btn--small">Pier sample &rarr; A</button>
+        <button id="sampleBoulevard" type="button" class="btn btn--small">Boulevard sample &rarr; B</button>
+      </div>
+      <div class="button-row">
+        <button id="sampleBoth" type="button" class="btn btn--small">Load both samples</button>
+        <button id="clearPhotos" type="button" class="btn btn--small btn--ghost">Clear photos</button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>2 &middot; Words</h2>
+      <label class="field">
+        <span>Title</span>
+        <input id="titleInput" type="text" value="SUNSET HEIST" maxlength="40" autocomplete="off">
+      </label>
+      <label class="field">
+        <span>Subtitle</span>
+        <input id="subtitleInput" type="text" value="LEONIDA &bull; VICE CITY" maxlength="60" autocomplete="off">
+      </label>
+    </section>
+
+    <section class="panel">
+      <h2>3 &middot; Layout</h2>
+      <div id="layoutRow" class="chip-row" role="group" aria-label="Layout"></div>
+    </section>
+
+    <section class="panel">
+      <h2>4 &middot; Grade</h2>
+      <div id="gradeRow" class="chip-row" role="group" aria-label="Colour grade"></div>
+    </section>
+
+    <section class="panel">
+      <h2>5 &middot; Framing</h2>
+      <label class="field">
+        <span>Photo A — horizontal</span>
+        <input id="focusAX" type="range" min="0" max="1" step="0.01" value="0.5">
+      </label>
+      <label class="field">
+        <span>Photo A — vertical</span>
+        <input id="focusAY" type="range" min="0" max="1" step="0.01" value="0.5">
+      </label>
+      <label class="field">
+        <span>Photo A — zoom</span>
+        <input id="zoomA" type="range" min="1" max="2.5" step="0.05" value="1">
+      </label>
+      <label class="field">
+        <span>Photo B — horizontal</span>
+        <input id="focusBX" type="range" min="0" max="1" step="0.01" value="0.5">
+      </label>
+      <label class="field">
+        <span>Photo B — vertical</span>
+        <input id="focusBY" type="range" min="0" max="1" step="0.01" value="0.5">
+      </label>
+      <label class="field">
+        <span>Photo B — zoom</span>
+        <input id="zoomB" type="range" min="1" max="2.5" step="0.05" value="1">
+      </label>
+    </section>
+
+    <section class="panel">
+      <h2>6 &middot; Export</h2>
+      <div id="sizeRow" class="chip-row" role="group" aria-label="Export size"></div>
+      <div class="button-row">
+        <button id="exportOne" type="button" class="btn btn--primary">Export this size</button>
+      </div>
+      <p class="hint">Exports are PNGs: 1080&times;1080, 1080&times;1350, 1280&times;720, 1920&times;1080.</p>
+    </section>
+  </aside>
+</main>
+
+<footer class="foot">
+  <p>Cover Snap Studio — an offline web app. No network, no uploads, no Rockstar artwork or fonts. Sample photos were made with an image model for make.fun and are free to use.</p>
+</footer>
+
+<script type="module" src="src/main.js"></script>
+<script type="module" src="src/shots.js"></script>
+</body>
+</html>

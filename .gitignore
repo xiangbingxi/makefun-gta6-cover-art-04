@@ -1,0 +1,22 @@
+# Cover Snap Studio — files that never belong in the repository.
+# Written in this session, for this entry.
+
+# The entry program's local output directory.
+out/
+
+# The screenshot driver's browser profile and download folders.
+.shots-profile/
+.verify-profile/
+.verify-downloads/
+
+# Node modules, if a dev tool is ever installed locally.
+node_modules/
+
+# macOS metadata files.
+.DS_Store
+
+# Editor and OS clutter.
+*.swp
+*.swo
+*~
+Thumbs.db

@@ -1,0 +1,333 @@
+/* Cover Snap Studio — editor styles.
+   Dark Vice City night: deep purple page, hot pink accents, pale text.
+   The preview sits left, the controls right; on a narrow screen they
+   stack. Shot mode (body.shot-mode) hides the editor chrome so the
+   screenshot driver photographs only the cover or the app itself. */
+
+:root {
+  --page: #160a2e;
+  --panel: #221244;
+  --panel-edge: #3a2368;
+  --ink: #f4efff;
+  --muted: #b9a8dd;
+  --accent: #ff5fa2;
+  --accent-soft: #ffb347;
+  --good: #43cea2;
+  --chip: #2e1a5e;
+  --chip-active: #ff5fa2;
+  --radius: 14px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--page);
+  color: var(--ink);
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* Top bar ---------------------------------------------------------- */
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--panel-edge);
+  background: linear-gradient(90deg, #1d0b33, #2a1048 55%, #3a1450);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 24px;
+  line-height: 1;
+  box-shadow: 0 0 0 3px rgba(255, 95, 162, 0.35);
+}
+
+.brand h1 {
+  margin: 0;
+  font-family: "Arial Black", "Helvetica Neue", Arial, sans-serif;
+  font-size: 22px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.brand p {
+  margin: 2px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.top-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Buttons ---------------------------------------------------------- */
+
+.btn {
+  appearance: none;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 10px 18px;
+  font: 700 14px/1 "Helvetica Neue", Arial, sans-serif;
+  cursor: pointer;
+  color: #fff;
+  background: var(--chip);
+  transition: transform 0.08s ease, background 0.15s ease;
+}
+
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+
+.btn--primary {
+  background: var(--accent);
+  box-shadow: 0 4px 18px rgba(255, 95, 162, 0.45);
+}
+
+.btn--ghost {
+  background: transparent;
+  border-color: var(--panel-edge);
+  color: var(--ink);
+}
+
+.btn--small {
+  padding: 8px 12px;
+  font-size: 13px;
+}
+
+/* Main layout ------------------------------------------------------ */
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+  gap: 20px;
+  padding: 20px 24px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.preview-pane {
+  min-width: 0;
+}
+
+.preview-frame {
+  background: #0d0619;
+  border: 1px solid var(--panel-edge);
+  border-radius: var(--radius);
+  padding: 12px;
+  display: flex;
+  justify-content: center;
+}
+
+.preview-frame canvas {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+}
+
+.preview-caption {
+  margin: 10px 2px 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.status {
+  margin: 6px 2px 0;
+  color: var(--good);
+  font-size: 13px;
+  min-height: 20px;
+}
+
+/* Control panels --------------------------------------------------- */
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--panel-edge);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+}
+
+.panel h2 {
+  margin: 0 0 10px;
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent-soft);
+}
+
+.hint {
+  margin: 0 0 10px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.field {
+  display: block;
+  margin-bottom: 12px;
+}
+
+.field > span {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.field input[type="text"],
+.field input[type="file"] {
+  width: 100%;
+  padding: 9px 11px;
+  border-radius: 8px;
+  border: 1px solid var(--panel-edge);
+  background: #160a2e;
+  color: var(--ink);
+  font: 400 14px/1.4 "Helvetica Neue", Arial, sans-serif;
+}
+
+.field input[type="range"] {
+  width: 100%;
+  accent-color: var(--accent);
+}
+
+.file-name {
+  margin: -6px 0 12px;
+  color: var(--muted);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.button-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.button-row:last-child { margin-bottom: 0; }
+
+/* Chips ------------------------------------------------------------ */
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  appearance: none;
+  border: 1px solid var(--panel-edge);
+  background: var(--chip);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 8px 14px;
+  font: 700 13px/1 "Helvetica Neue", Arial, sans-serif;
+  cursor: pointer;
+}
+
+.chip:hover { border-color: var(--accent); }
+
+.chip--active {
+  background: var(--chip-active);
+  border-color: var(--chip-active);
+  color: #fff;
+}
+
+/* Footer ----------------------------------------------------------- */
+
+.foot {
+  padding: 8px 24px 28px;
+  color: var(--muted);
+  font-size: 12px;
+  text-align: center;
+}
+
+/* Shot mode: the driver photographs one thing at a time. ----------- */
+
+body.shot-mode .topbar,
+body.shot-mode .controls,
+body.shot-mode .foot,
+body.shot-mode .preview-caption,
+body.shot-mode .status {
+  display: none !important;
+}
+
+body.shot-mode .layout {
+  display: block;
+  padding: 0;
+  margin: 0;
+  max-width: none;
+}
+
+body.shot-mode .preview-pane { margin: 0; }
+
+body.shot-mode .preview-frame {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+body.shot-mode #preview { display: none; }
+
+body.shot-mode #shot {
+  display: block !important;
+  max-width: none;
+  border-radius: 0;
+}
+
+/* Editor shot: keep the whole editor visible, just hide the footer. */
+body.shot-mode.shot-editor .topbar,
+body.shot-mode.shot-editor .controls {
+  display: flex !important;
+}
+
+body.shot-mode.shot-editor .layout {
+  display: grid;
+  padding: 20px 24px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+body.shot-mode.shot-editor #preview { display: block; }
+body.shot-mode.shot-editor #shot { display: none !important; }
+
+/* Narrow screens --------------------------------------------------- */
+
+@media (max-width: 860px) {
+  .layout { grid-template-columns: 1fr; }
+  .topbar { padding: 14px 16px; }
+  .layout { padding: 14px 16px; }
+}
